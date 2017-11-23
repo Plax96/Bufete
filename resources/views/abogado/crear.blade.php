@@ -1,3 +1,4 @@
+@section('titulo', "Nuevo Abogado")
 @extends('base')
 
 @section('content')

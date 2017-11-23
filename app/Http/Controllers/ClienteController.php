@@ -9,7 +9,7 @@ class ClienteController extends Controller
 {
   public function index()
   {
-    $var = Cliente::all();
+    $var = Cliente::all()->where('estado','1');
     return view('clientes/listadoclientes',compact('var'));
   }
   public function create()
@@ -34,5 +34,32 @@ class ClienteController extends Controller
     $abogado->save();
     return redirect('/');
   }
+  public function edit($id)
+  {
+    $cliente=Cliente::findOrFail($id);
+    return view('clientes.editar', compact('cliente'));
+  }
+  public function update(Request $request, $id)
+    {
+      $this->Validate($request, [
+        'nombre'=>'required',
+        'apellido'=>'required',
+        'dpi'=>'required',
+        'telefono'=>'required',
+      ]);
+      Cliente::where('id_cliente',$id)->update([
+            'nombre'=>$request->input('nombre'),
+            'apellido'=>$request->input('apellido'),
+            'dpi'=>$request->input('dpi'),
+            'telefono'=>$request->input('telefono'),
+          ]);
+
+      return redirect('clientes');
+    }
+    public function delete($id)
+    {
+      Cliente::where('id_cliente', $id)->delete();
+      return redirect('clientes');
+    }
 
 }

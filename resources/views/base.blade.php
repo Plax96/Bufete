@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Plax</title>
+    <title>@yield('titulo') - Plax</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -35,42 +35,29 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-              {% if user.is_authenticated %}
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href='{{url("/")}}' >Casos libres</a>
+                <a class="nav-link js-scroll-trigger" href='{{url("/")}}'>Casos libres</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'nuevo_caso' %}" >Nuevo Caso</a>
+                <a class="nav-link js-scroll-trigger" href='{{url("caso/nuevo")}}'>Nuevo Caso</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'casosocupados' %}" >Casos Ocupados</a>
+                <a class="nav-link js-scroll-trigger" href='{{url("casos/finalizados")}}'>Casos Terminados</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'casosterminados' %}" >Casos Terminados</a>
+                <a class="nav-link js-scroll-trigger" href='{{url("cliente/nuevo")}}'>Nuevo Cliente</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'nuevo_cliente' %}">Nuevo Cliente</a>
+                <a class="nav-link js-scroll-trigger" href='{{url("abogado/nuevo")}}'>Nuevo Abogado</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'listarclientes' %}">Clientes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Cerrar Sesión</a>
+                <a class="nav-link js-scroll-trigger" href='{{url("clientes")}}'>Clientes</a>
               </li>
 
             </ul>
           </div>
-              {% else %}
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'login' %}" >Iniciar Sesión</a>
-              </li>
-            </ul>
-          </div>
-              {% endif %}
         </nav>
         <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
           <div class="my-auto">

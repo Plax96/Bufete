@@ -1,15 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 /*
 Route::get('/', function () {
     return view('welcome');
@@ -26,30 +17,16 @@ Route::post('/abogado/guardar', 'AbogadoController@store');
 Route::get('/cliente/nuevo', 'ClienteController@create');
 Route::post('/cliente/guardar', 'ClienteController@store');
 Route::get('clientes', 'ClienteController@index');
+Route::get('clientes/editar/{id}','ClienteController@edit');
+Route::post('clientes/actualizar/{id}','ClienteController@update');
+Route::post('clientes/eliminar/{id}','ClienteController@delete');
 
-
+// Expedientes
 Route::get('/','ExpedienteController@index');
-
-Route::get('casos/ocupados',function(){
-  return "casosocupados";
-});
-
-Route::get('clientes', 'ClienteController@index');
-
-
-Route::get('/casos/terminados',function(){
-  return "casosterminados";
-});
-
-Route::get('/caso/{id}',function($id){
-  return "Mostrando caso especial: {$id}";
-})->where('id','\d+');
-
-Route::get('/caso/editar/{id}',function($id){
-  return "Mostrando editar caso: {$id}";
-})->where('id','\d+');
-
-
-Route::get('/caso/terminar/{id}',function($id){
-  return "Mostrando terminar caso: {$id}";
-})->where('id','\d+');
+Route::get('casos/libres','ExpedienteController@index');
+Route::get('casos/ocupados','ExpedienteController@ocupados');
+Route::get('casos/finalizados','ExpedienteController@finalizados');
+Route::get('caso/nuevo','ExpedienteController@create');
+Route::post('caso/guardar', 'ExpedienteController@store');
+Route::get('caso/editar/{id}','ExpedienteController@edit');
+Route::post('caso/actualizar/{id}','ExpedienteController@abogado');
