@@ -47,13 +47,15 @@ class ClienteController extends Controller
         'dpi'=>'required',
         'telefono'=>'required',
       ]);
-      Cliente::where('id_cliente',$id)->update([
-            'nombre'=>$request->input('nombre'),
-            'apellido'=>$request->input('apellido'),
-            'dpi'=>$request->input('dpi'),
-            'telefono'=>$request->input('telefono'),
-          ]);
 
+        $data=array(
+          'nombre'=>$request->input('nombre'),
+          'apellido'=>$request->input('apellido'),
+          'dpi'=>$request->input('dpi'),
+          'telefono'=>$request->input('telefono'),
+
+        );
+        Cliente::where('id_cliente',$id)->update($data);
       return redirect('clientes');
     }
     public function delete($id)

@@ -37,6 +37,26 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
+
+              @if (Auth::guest())
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                            @else
+          </div>
+          <button type="button" class="btn btn-warning">
+    <a href="{{ route('logout') }}"            onclick="event.preventDefault();                     document.getElementById('logout-form').submit();">
+        Logout
+    </a>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
+</button>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href='{{url("/")}}'>Casos libres</a>
               </li>
@@ -64,6 +84,7 @@
           @yield('content')
 
           </div>
+                        @endif
 
         </section>
 

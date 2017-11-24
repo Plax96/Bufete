@@ -18,8 +18,8 @@ Route::get('/cliente/nuevo', 'ClienteController@create');
 Route::post('/cliente/guardar', 'ClienteController@store');
 Route::get('clientes', 'ClienteController@index');
 Route::get('clientes/editar/{id}','ClienteController@edit');
+Route::get('clientes/eliminar/{id}','ClienteController@delete');
 Route::post('clientes/actualizar/{id}','ClienteController@update');
-Route::post('clientes/eliminar/{id}','ClienteController@delete');
 
 // Expedientes
 Route::get('/','ExpedienteController@index');
@@ -30,3 +30,7 @@ Route::get('caso/nuevo','ExpedienteController@create');
 Route::post('caso/guardar', 'ExpedienteController@store');
 Route::get('caso/editar/{id}','ExpedienteController@edit');
 Route::post('caso/actualizar/{id}','ExpedienteController@abogado');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

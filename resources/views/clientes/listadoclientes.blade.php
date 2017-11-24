@@ -11,10 +11,10 @@
             </div>
              <div class="resume-date text-md-right">
                <span class="text-primary">Teléfono:   {{ $cliente->telefono }}</span>
-             </div>
+             </div>  <button type="button" class="btn btn-danger"><a href='{{ url("/clientes/eliminar/{$cliente->id_cliente}")}}' style="text-decoration:">Eliminar</a></button>
+
            </div>
-          <button type="button" class="btn btn-danger"><a href='{{ url("/clientes/eliminar/{$cliente->id_cliente}")}}' style="text-decoration:">Eliminar</a></button>
-  @empty
+          @empty
       <li>No hay clientes registrados</li>
   @endforelse
 
